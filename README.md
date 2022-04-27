@@ -15,3 +15,7 @@ React-Native App Gastos Financieros
 ## Navegación - configurar - estilos
 ![Captura](https://user-images.githubusercontent.com/7141537/165591975-04b16f75-9c3a-458b-aefc-50b2424c5e20.PNG)
 
+## Lista de items - estilos
+![Captura](https://user-images.githubusercontent.com/7141537/165639026-b9b8e14f-f57b-42fe-a85e-1d539a1c1149.PNG)
+
+

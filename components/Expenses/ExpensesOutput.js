@@ -7,19 +7,19 @@ const DUMMY_EXPENSES = [
   {
     id: "e1",
     description: "Un par de zapatos",
-    amount: 59.99,
+    amount: 59,
     date: new Date("2022-04-16"),
   },
   {
     id: "e2",
     description: "Un par de pantalones",
-    amount: 89.29,
+    amount: 89.5,
     date: new Date("2022-04-20"),
   },
   {
     id: "e3",
     description: "Bananas y manzanas",
-    amount: 5.99,
+    amount: 5.9,
     date: new Date("2022-04-25"),
   },
   {

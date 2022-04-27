@@ -18,4 +18,15 @@ React-Native App Gastos Financieros
 ## Lista de items - estilos
 ![Captura](https://user-images.githubusercontent.com/7141537/165639026-b9b8e14f-f57b-42fe-a85e-1d539a1c1149.PNG)
 
+## Formato fecha y redondeo de montos
+* Se agrego un utilitario: util.js
+````
+export const getFormattedDate = (date) => {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+};
+````
+![Captura](https://user-images.githubusercontent.com/7141537/165641725-30eb4551-9727-4f6b-aaf7-92112791435c.PNG)
+
+
+
 

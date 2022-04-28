@@ -30,6 +30,54 @@ export const getFormattedDate = (date) => {
 ## Agregar IconButton para agregar o modificar registro 
 ![image](https://user-images.githubusercontent.com/7141537/165787932-25010967-ff59-4b42-9263-239d47ba9466.png)
 
+## Realizar navegación entre pantallas mediante programación
+* El Objeto screenOptions 
+```
+ <BottonTabs.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: primary500 },
+        headerTintColor: "white",
+        tabBarStyle: { backgroundColor: primary500 },
+        tabBarActiveTintColor: { backgroundColor: accent500 },
+        headerRight: ({ tintColor }) => {
+          return (
+            <IconButton
+              icon="add"
+              color={tintColor}
+              size={24}
+              onPress={() => {}}
+            />
+          );
+        },
+      }}
+    >
+```
+
+* Agregar función que retorna un objeto en el Objeto screenOptions 
+```
+<BottonTabs.Navigator
+      screenOptions={({ navigation }) => ({
+        headerStyle: { backgroundColor: primary500 },
+        headerTintColor: "white",
+        tabBarStyle: { backgroundColor: primary500 },
+        tabBarActiveTintColor: { backgroundColor: accent500 },
+        headerRight: ({ tintColor }) => {
+          return (
+            <IconButton
+              icon="add"
+              color={tintColor}
+              size={24}
+              onPress={() => navigation.navigate("ManageExpense")}
+            />
+          );
+        },
+      })}
+    >
+```
+![Captura](https://user-images.githubusercontent.com/7141537/165791414-aa2fb578-d80b-420c-a3c0-04f8b20f0d94.PNG)
+![Captura1](https://user-images.githubusercontent.com/7141537/165791410-5214d97c-d492-44b5-9ae2-099a72e8e74c.PNG)
+
+
 
 
 

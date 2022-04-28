@@ -18,7 +18,7 @@ const ExpensesOverview = () => {
 
   return (
     <BottonTabs.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerStyle: { backgroundColor: primary500 },
         headerTintColor: "white",
         tabBarStyle: { backgroundColor: primary500 },
@@ -29,11 +29,11 @@ const ExpensesOverview = () => {
               icon="add"
               color={tintColor}
               size={24}
-              onPress={() => {}}
+              onPress={() => navigation.navigate("ManageExpense")}
             />
           );
         },
-      }}
+      })}
     >
       <BottonTabs.Screen
         name="RecentExpenses"

@@ -27,6 +27,9 @@ export const getFormattedDate = (date) => {
 ````
 ![Captura](https://user-images.githubusercontent.com/7141537/165641725-30eb4551-9727-4f6b-aaf7-92112791435c.PNG)
 
+## Agregar IconButton para agregar o modificar registro 
+![image](https://user-images.githubusercontent.com/7141537/165787932-25010967-ff59-4b42-9263-239d47ba9466.png)
+
 
 
 

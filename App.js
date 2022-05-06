@@ -12,10 +12,9 @@ import IconButton from "./components/UI/IconButton";
 
 const Stack = createNativeStackNavigator();
 const BottonTabs = createBottomTabNavigator();
+const { primary500, accent500 } = GlobalStyles.colors;
 
 const ExpensesOverview = () => {
-  const { primary500, accent500 } = GlobalStyles.colors;
-
   return (
     <BottonTabs.Navigator
       screenOptions={({ navigation }) => ({
@@ -66,13 +65,24 @@ export default function App() {
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: primary500 },
+            headerTintColor: "white",
+          }}
+        >
           <Stack.Screen
             name="ExpensesOverview"
             component={ExpensesOverview}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="ManageExpense" component={ManageExpense} />
+          <Stack.Screen
+            name="ManageExpense"
+            component={ManageExpense}
+            options={{
+              presentation: "modal",
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

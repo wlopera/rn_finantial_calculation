@@ -78,6 +78,61 @@ export const getFormattedDate = (date) => {
 ![Captura1](https://user-images.githubusercontent.com/7141537/165791410-5214d97c-d492-44b5-9ae2-099a72e8e74c.PNG)
 
 
+## Agregar button,js para agregar o modificar registro
+```
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { GlobalStyles } from "../../constants/style";
 
+const Button = ({ children, onPress, mode, style }) => {
+  return (
+    <View style={style}>
+      <Pressable
+        onPress={onPress}
+        style={({ pressed }) => pressed && styles.pressed}
+      >
+        <View style={[styles.button, mode === "flat" && styles.flat]}>
+          <Text style={[styles.buttonText, mode === "flat" && styles.flatText]}>
+            {children}
+          </Text>
+        </View>
+      </Pressable>
+    </View>
+  );
+};
+
+export default Button;
+
+const styles = StyleSheet.create({
+  button: {
+    borderRadius: 4,
+    padding: 8,
+    backgroundColor: GlobalStyles.colors.primary500,
+  },
+  flat: {
+    backgroundColor: "transparent",
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+  },
+  flatText: {
+    color: GlobalStyles.colors.primary200,
+  },
+  pressed: {
+    opacity: 0.75,
+    backgroundColor: GlobalStyles.colors.primary100,
+    borderRadius: 4,
+  },
+});
+
+```
+
+## Configurar pantalla de Administración de Gastos
+ * Agregar tipos de botones IconButton y Button
+ * Estilos
+ * Boton Cancelar (navigation.goBack())
+
+![Captura](https://user-images.githubusercontent.com/7141537/167225281-ec70f203-9e59-40ff-9421-2299cf8dcbd7.PNG)
 
 

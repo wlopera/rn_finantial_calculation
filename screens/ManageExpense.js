@@ -1,14 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useLayoutEffect } from "react";
 import IconButton from "../components/UI/IconButton";
 import { GlobalStyles } from "../constants/style";
 import Button from "../components/UI/Button";
+import { ExpensesContext } from "../store/expenses-context";
 
 const { error500, primary200, primary800 } = GlobalStyles.colors;
 
 const ManageExpense = ({ route, navigation }) => {
-  const expenseId = route.params?.expenseId;
-  const isEditing = !!expenseId;
+  const expenseCTX = useContext(ExpensesContext);
+
+  const editedExpeAseId = route.params?.expenseId;
+  const isEditing = !!editedExpeAseId;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -17,7 +20,7 @@ const ManageExpense = ({ route, navigation }) => {
   }, [navigation, isEditing]);
 
   const deleteExpenseHandler = () => {
-    console.log("Borrar Gasto");
+    expenseCTX.deleteExpense(editedExpeAseId);
     navigation.goBack();
   };
 
@@ -26,7 +29,19 @@ const ManageExpense = ({ route, navigation }) => {
   };
 
   const confirmHandler = () => {
-    console.log("Enviar");
+    if (isEditing) {
+      expenseCTX.updateExpense(editedExpeAseId, {
+        description: "Prueba De Modificar registro",
+        amount: 29.99,
+        date: new Date("2022-05-09"),
+      });
+    } else {
+      expenseCTX.addExpense({
+        description: "Prueba",
+        amount: 19.99,
+        date: new Date("2022-05-20"),
+      });
+    }
     navigation.goBack();
   };
 

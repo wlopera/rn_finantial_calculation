@@ -9,6 +9,7 @@ import RecentExpenses from "./screens/RecentExpenses";
 import { GlobalStyles } from "./constants/style";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "./components/UI/IconButton";
+import ExpensesContextProvider from "./store/expenses-context";
 
 const Stack = createNativeStackNavigator();
 const BottonTabs = createBottomTabNavigator();
@@ -40,9 +41,14 @@ const ExpensesOverview = () => {
         options={{
           title: "Gasto Reciente",
           tabBarLabel: "Reciente",
+          tabBarLabelStyle: { color: "yellow", fontSize: 14 },
           tabBarIcon: (color, size) => (
-            <Ionicons name="hourglass" color={color} size={size} />
+            <Ionicons name="hourglass" color="white" size={24} />
           ),
+          tabBarActiveTintColor: "white",
+          tabBarInactiveTintColor: "black",
+          tabBarActiveBackgroundColor: "red",
+          tabBarInactiveBackgroundColor: primary500,
         }}
       />
       <BottonTabs.Screen
@@ -51,9 +57,12 @@ const ExpensesOverview = () => {
         options={{
           title: "Todos los Gasto",
           tabBarLabel: "Gastos",
+          tabBarLabelStyle: { color: "yellow", fontSize: 14 },
           tabBarIcon: (color, size) => (
-            <Ionicons name="calendar" color={color} size={size} />
+            <Ionicons name="calendar" color="white" size={24} />
           ),
+          tabBarActiveBackgroundColor: "red",
+          tabBarInactiveBackgroundColor: primary500,
         }}
       />
     </BottonTabs.Navigator>
@@ -63,28 +72,30 @@ const ExpensesOverview = () => {
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: primary500 },
-            headerTintColor: "white",
-          }}
-        >
-          <Stack.Screen
-            name="ExpensesOverview"
-            component={ExpensesOverview}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="ManageExpense"
-            component={ManageExpense}
-            options={{
-              presentation: "modal",
+      <StatusBar style="light" />
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: primary500 },
+              headerTintColor: "white",
             }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="ExpensesOverview"
+              component={ExpensesOverview}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ManageExpense"
+              component={ManageExpense}
+              options={{
+                presentation: "modal",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }

@@ -11,11 +11,15 @@ const RecentExpenses = () => {
   const date7DaysAgo = getDateMinusDays(today, 7);
 
   const recentExpenses = expenseCTX.expenses.filter((expense) => {
-    return expense.date > date7DaysAgo;
+    return expense.date >= date7DaysAgo && expense.date <= today;
   });
 
   return (
-    <ExpensesOutput expenses={recentExpenses} expensesPeriod="Ultimos 7 días" />
+    <ExpensesOutput
+      expenses={recentExpenses}
+      expensesPeriod="Ultimos 7 días"
+      fallbackText="No existen registros para los últimos 7 días"
+    />
   );
 };
 
